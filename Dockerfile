@@ -1,6 +1,7 @@
 FROM debian:wheezy
 MAINTAINER Philipp Homann <docker.pub@wwwpage.de>
 
+# install lighttpd and PHP
 RUN apt-get update && apt-get -y install \
 	lighttpd \
 	php5-cgi \
@@ -9,10 +10,11 @@ RUN apt-get update && apt-get -y install \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/*
 
+# configure PHP with lighttpd
 RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/php5/cgi/php.ini
-
 COPY lighttpd/lighttpd.conf /etc/lighttpd/lighttpd.conf
 
+# start lighttpd
 CMD ["lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
 
 EXPOSE 80
@@ -20,8 +22,6 @@ EXPOSE 80
 
 
 
-#COPY php/php.ini /etc/php5/cgi/php.ini
-#COPY php/test.ini /etc/php5/cgi/test.ini
 #COPY php.conf /etc/lighttpd/conf-available/40-php.conf
 #RUN lighttpd-enable-mod fastcgi php
 #RUN adduser www-data -G www-data -H -s /bin/false -D
