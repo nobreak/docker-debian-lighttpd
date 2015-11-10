@@ -22,6 +22,7 @@ EXPOSE 80
 
 
 
+
 #COPY php.conf /etc/lighttpd/conf-available/40-php.conf
 #RUN lighttpd-enable-mod fastcgi php
 #RUN adduser www-data -G www-data -H -s /bin/false -D
