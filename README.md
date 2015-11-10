@@ -14,19 +14,23 @@ $ docker build -t debian-lighttpd .
 ### Run
 
 ```
-docker run -p 80:80 -d debian-lighttpd
-```
-or
+$ docker run -d --name=debian-lighttpd -p 80:80 -v $PWD/html/:/var/www/ debian-lighttpd
 
 ```
-$ docker run -i -t debian-lighttpd /bin/bash 
+
+
+### open terminal
+
+```
+$ docker exec -i -t debian-lighttpd bash
 ```
 
+### copy
 
-
-
-
-
+```
+$ docker cp [options] CONTAINER:PATH LOCALPATH|-
+$ docker cp [options] LOCALPATH|- CONTAINER:PATH
+```
 
 
 
