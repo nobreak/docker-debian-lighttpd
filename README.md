@@ -32,5 +32,19 @@ $ docker cp [options] CONTAINER:PATH LOCALPATH|-
 $ docker cp [options] LOCALPATH|- CONTAINER:PATH
 ```
 
+### get IP
+
+```
+$ docker-machine IP default
+```
+
+### test PHP
+
+Call in your brwoser:
+
+```
+YourHostIP/phpinfo.php
+```
+
 
 
